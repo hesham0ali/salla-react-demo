@@ -36,7 +36,7 @@ export default function Faq({ id, settings, data }) {
               {(data.supportNote || data.avgReply) && (
                 <div className="faq__support">
                   <div className="faq__avatars" aria-hidden="true">
-                    {['أ', 'م', 'ن', 'س'].map((ch, i) => (
+                    {['س', 'ن', 'م', 'أ'].map((ch) => (
                       <span className="faq__avatar" key={ch}>
                         {ch}
                       </span>

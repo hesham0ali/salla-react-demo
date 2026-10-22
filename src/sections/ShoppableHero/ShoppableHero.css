@@ -3,7 +3,7 @@
   min-height: 70vh;
   overflow: hidden;
   isolation: isolate;
-  background: var(--media-bg-dark);
+  background: var(--media-bg);
 }
 
 .shop__media {
