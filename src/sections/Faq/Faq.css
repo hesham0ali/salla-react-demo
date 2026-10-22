@@ -1,0 +1,156 @@
+.faq__layout {
+  display: grid;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  border: var(--card-border);
+}
+
+.faq--split .faq__layout {
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
+}
+
+/* لو مفيش محتوى تعريفي → القائمة تتوسّط بدل ما تسيب فراغ */
+.faq--centered .faq__layout {
+  grid-template-columns: minmax(0, var(--container-narrow));
+  justify-content: center;
+}
+
+.faq__title {
+  font-size: var(--text-3xl);
+  max-width: 16ch;
+}
+
+.faq__body {
+  margin-block-start: var(--space-4);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 44ch;
+}
+
+.faq__support {
+  margin-block-start: var(--space-8);
+}
+
+.faq__avatars {
+  position: relative;
+  display: flex;
+  margin-block-end: var(--space-4);
+  isolation: isolate;
+}
+
+/* stacking order: first avatar (index 1) on top within isolated context */
+.faq__avatar:nth-child(1) { z-index: 4; }
+.faq__avatar:nth-child(2) { z-index: 3; }
+.faq__avatar:nth-child(3) { z-index: 2; }
+.faq__avatar:nth-child(4) { z-index: 1; }
+
+.faq__avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-circle);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-hover);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  border: var(--border-width-thick) solid var(--color-bg);
+  margin-inline-start: -10px;
+}
+.faq__avatar:first-child {
+  margin-inline-start: 0;
+}
+
+.faq__online {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-circle);
+  background: var(--color-success);
+  border: var(--border-width-thick) solid var(--color-bg);
+}
+
+.faq__note {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+.faq__note--muted {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  margin-block-start: var(--space-1);
+}
+
+/* ---------- List ---------- */
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.faq__item {
+  border-block-end: var(--border);
+}
+.faq__item:first-child {
+  border-block-start: var(--border);
+}
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  padding-block: var(--space-5);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-align: start;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.faq__q:hover {
+  color: var(--color-accent);
+}
+
+.faq__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-circle);
+  background: var(--color-bg-muted);
+  transition: background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.faq__item.is-open .faq__icon {
+  background: var(--color-text);
+  color: var(--color-text-inverse);
+}
+
+.faq__a {
+  overflow: hidden;
+}
+
+.faq__a p {
+  padding-block-end: var(--space-5);
+  padding-inline-end: var(--space-10);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .faq--split .faq__layout {
+    grid-template-columns: 1fr;
+  }
+  .faq__a p {
+    padding-inline-end: 0;
+  }
+}

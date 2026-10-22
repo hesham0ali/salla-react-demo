@@ -1,0 +1,221 @@
+/* ============================================================
+   DESIGN TOKENS — المصدر الوحيد للحقيقة
+   ------------------------------------------------------------
+   أي قيمة بصرية في المشروع لازم تيجي من هنا.
+   ممنوع أي hard-coded color / size / radius جوه أي section.
+   التوثيق الكامل: docs/design-tokens.md
+   ============================================================ */
+
+:root {
+  /* ---------- 1. COLOR — Primitives (لا تُستخدم مباشرة) ---------- */
+  --clr-ink-900: #14161a;
+  --clr-ink-800: #22262c;
+  --clr-ink-700: #3a3f47;
+  --clr-ink-600: #5c636d;
+  --clr-ink-500: #858c96;
+  --clr-ink-400: #adb3bb;
+  --clr-ink-300: #cfd3d8;
+  --clr-ink-200: #e3e5e8;
+  --clr-ink-100: #f0f1f2;
+  --clr-ink-050: #f7f7f6;
+
+  --clr-sand-100: #faf8f5;
+  --clr-sand-200: #f2ede6;
+  --clr-sand-300: #e6ded3;
+
+  --clr-clay-700: #8c3f23;
+  --clr-clay-600: #b35228;
+  --clr-clay-500: #c2602d;
+  --clr-clay-100: #f9ece4;
+
+  --clr-green-600: #2f7d57;
+  --clr-green-100: #e6f2ec;
+  --clr-amber-600: #b7791f;
+  --clr-red-600: #c0392b;
+  --clr-white: #ffffff;
+
+  --rgb-ink: 20 22 26;         /* raw channels of --clr-ink-900 */
+  --rgb-on-dark: 255 255 255;  /* raw channels of --clr-white */
+
+  /* ---------- 2. COLOR — Semantic (دي اللي بتستخدمها) ---------- */
+  --color-bg: var(--clr-white);
+  --color-bg-subtle: var(--clr-sand-100);
+  --color-bg-muted: var(--clr-sand-200);
+  --color-bg-inverse: var(--clr-ink-900);
+
+  --color-text: var(--clr-ink-900);
+  --color-text-secondary: var(--clr-ink-600);
+  --color-text-muted: var(--clr-ink-500);
+  --color-text-inverse: var(--clr-white);
+  --color-text-on-accent: var(--clr-white);
+
+  --color-border: var(--clr-ink-200);
+  --color-border-strong: var(--clr-ink-300);
+  --color-border-inverse: rgb(var(--rgb-on-dark) / 0.18);
+
+  --color-accent: var(--clr-clay-600);
+  --color-accent-hover: var(--clr-clay-700);
+  --color-accent-subtle: var(--clr-clay-100);
+
+  --color-primary: var(--clr-ink-900);
+  --color-primary-hover: var(--clr-ink-800);
+
+  --color-success: var(--clr-green-600);
+  --color-success-subtle: var(--clr-green-100);
+  --color-warning: var(--clr-amber-600);
+  --color-danger: var(--clr-red-600);
+
+  --color-overlay-strong: rgb(var(--rgb-ink) / 0.75);
+  --color-overlay:        rgb(var(--rgb-ink) / 0.55);
+  --color-overlay-soft:   rgb(var(--rgb-ink) / 0.15);
+  --color-overlay-none:   rgb(var(--rgb-ink) / 0);
+  --color-on-dark-strong: rgb(var(--rgb-on-dark) / 0.75);
+  --color-on-dark:        rgb(var(--rgb-on-dark) / 0.4);
+  --color-on-dark-soft:   rgb(var(--rgb-on-dark) / 0.14);
+  --color-skeleton: var(--clr-ink-100);
+
+  /* ---------- 3. TYPOGRAPHY ---------- */
+  --font-family-base: 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-family-display: var(--font-family-base);
+  --font-family-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Type scale — modular 1.2 / fluid clamp */
+  --text-2xs: 0.6875rem;  /* 11px */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.8125rem;   /* 13px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-md: 1rem;        /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: clamp(1.25rem, 0.6vw + 1.1rem, 1.375rem);
+  --text-2xl: clamp(1.5rem, 1.2vw + 1.2rem, 1.875rem);
+  --text-3xl: clamp(1.875rem, 2vw + 1.3rem, 2.5rem);
+  --text-4xl: clamp(2.25rem, 3.2vw + 1.4rem, 3.5rem);
+  --text-5xl: clamp(2.75rem, 5vw + 1.5rem, 5rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.85;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.12em;
+
+  /* ---------- 4. SPACING — 4px base ---------- */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* المسافة الرأسية بين الأقسام — كل section بيملكها جوّاه (مفيش margin collapse) */
+  --section-padding-y: clamp(3.5rem, 6vw, 6rem);
+  --section-padding-y-sm: clamp(2.5rem, 4vw, 4rem);
+  --section-gap-header: clamp(1.75rem, 3vw, 3rem);
+
+  /* ---------- 5. LAYOUT ---------- */
+  --container-max: 1320px;
+  --container-narrow: 880px;
+  --container-wide: 1600px;
+  --container-padding: clamp(1rem, 4vw, 2.5rem);
+  --grid-gutter: clamp(0.75rem, 1.5vw, 1.5rem);
+
+  /* ---------- 6. RADIUS ---------- */
+  --radius-none: 0;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-2xl: 36px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ---------- 7. BORDER ---------- */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --border: var(--border-width) solid var(--color-border);
+  --border-strong: var(--border-width) solid var(--color-border-strong);
+  --border-inverse: var(--border-width) solid var(--color-border-inverse);
+
+  /* ---------- 8. SHADOW ---------- */
+  --shadow-xs: 0 1px 2px rgb(var(--rgb-ink) / 0.05);
+  --shadow-sm: 0 2px 8px rgb(var(--rgb-ink) / 0.06);
+  --shadow-md: 0 8px 24px rgb(var(--rgb-ink) / 0.08);
+  --shadow-lg: 0 18px 48px rgb(var(--rgb-ink) / 0.12);
+  --shadow-focus: 0 0 0 3px rgba(179, 82, 40, 0.28);
+
+  /* ---------- 9. MOTION ---------- */
+  --duration-instant: 100ms;
+  --duration-fast: 180ms;
+  --duration-base: 280ms;
+  --duration-slow: 480ms;
+  --duration-slower: 720ms;
+
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+
+  --reveal-distance: 24px;
+  --reveal-stagger: 0.08s;
+
+  /* ---------- 10. Z-INDEX ---------- */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* ---------- 11. COMPONENT TOKENS ---------- */
+  --control-height-sm: 36px;
+  --control-height-md: 44px;
+  --control-height-lg: 54px;
+  --control-padding-x: var(--space-6);
+  --control-radius: var(--radius-pill);
+
+  --card-radius: var(--radius-md);
+  --card-bg: var(--color-bg);
+  --card-border: var(--border);
+
+  --header-height: 72px;
+  --header-height-compact: 60px;
+
+  --media-bg-dark:     var(--clr-ink-800);  /* placeholder tint behind full-bleed dark images */
+  --media-placeholder: var(--clr-ink-200);  /* cool endpoint of image-loading gradient */
+}
+
+/* ---------- Breakpoints (مرجع — CSS vars لا تعمل داخل media queries) ----------
+   sm: 480px | md: 768px | lg: 1024px | xl: 1280px | 2xl: 1536px
+   المشروع mobile-first: الأساس موبايل، والـ media queries بـ min-width.
+------------------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 1ms;
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --duration-slower: 1ms;
+    --reveal-distance: 0px;
+    --reveal-stagger: 0s;
+  }
+}
