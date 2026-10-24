@@ -1,0 +1,259 @@
+.hd {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-header);
+  background: var(--color-bg);
+  border-block-end: var(--border-width) solid transparent;
+  transition: border-color var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    height var(--duration-base) var(--ease-standard);
+}
+
+.hd.is-stuck {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-xs);
+}
+
+.hd__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  height: var(--header-height);
+  transition: height var(--duration-base) var(--ease-standard);
+}
+
+.hd.is-stuck .hd__bar {
+  height: var(--header-height-compact);
+}
+
+.hd__logo {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.hd__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-inline-start: var(--space-6);
+}
+
+.hd__nav-item {
+  position: relative;
+}
+
+.hd__nav-item > a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-block: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.hd__nav-item:hover > a {
+  color: var(--color-text);
+}
+
+.hd__dropdown {
+  position: absolute;
+  inset-block-start: calc(100% + var(--space-2));
+  inset-inline-start: 0;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2);
+  background: var(--color-bg);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-out), visibility var(--duration-fast);
+}
+
+.hd__nav-item:hover .hd__dropdown,
+.hd__nav-item:focus-within .hd__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.hd__dropdown a {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+.hd__dropdown a:hover {
+  background: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+.hd__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-inline-start: auto;
+}
+
+.hd__icon {
+  display: grid;
+  place-items: center;
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+  border-radius: var(--radius-circle);
+  color: var(--color-text);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.hd__icon:hover {
+  background: var(--color-bg-muted);
+}
+
+.hd__cart {
+  position: relative;
+}
+
+.hd__count {
+  position: absolute;
+  inset-block-start: 4px;
+  inset-inline-start: 4px;
+  min-width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  padding-inline: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ---------- Mobile ---------- */
+.hd__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+}
+
+.hd__burger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--color-text);
+  margin-inline: auto;
+}
+
+/* Backdrop and sidebar are hidden on desktop */
+.hd__backdrop,
+.hd__mobile {
+  display: none;
+}
+
+/* Sidebar panel header */
+.hd__mobile-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--space-2) var(--space-4);
+  min-height: var(--header-height-compact);
+  border-block-end: var(--border);
+  flex-shrink: 0;
+}
+
+.hd__mobile-close {
+  display: grid;
+  place-items: center;
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+  border-radius: var(--radius-circle);
+  color: var(--color-text);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.hd__mobile-close:hover {
+  background: var(--color-bg-muted);
+}
+
+.hd__mobile-close:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.hd__mobile a {
+  padding-block: var(--space-3);
+  padding-inline: var(--container-padding);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-medium);
+  border-block-end: var(--border);
+}
+
+@media (max-width: 900px) {
+  .hd__nav {
+    display: none;
+  }
+
+  .hd__burger {
+    display: flex;
+  }
+
+  .hd__logo {
+    margin-inline-start: var(--space-2);
+  }
+
+  /* Backdrop overlay */
+  .hd__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-overlay) - 1);
+    background: rgb(var(--rgb-ink) / 0.4);
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: opacity var(--duration-base) var(--ease-standard),
+                visibility 0s var(--duration-base);
+  }
+
+  .hd__backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--duration-base) var(--ease-standard),
+                visibility 0s;
+  }
+
+  /* Sidebar panel — slides in from the right */
+  .hd__mobile {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;        /* RTL: = right side of screen */
+    width: min(320px, 85vw);
+    background: var(--color-bg);
+    border-inline-end: var(--border);   /* RTL: = left edge of panel */
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+    z-index: var(--z-overlay);
+    transform: translateX(100%);  /* off-screen to the right */
+    visibility: hidden;
+    transition: transform var(--duration-base) var(--ease-out),
+                visibility 0s var(--duration-base);
+  }
+
+  .hd__mobile.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--duration-base) var(--ease-out),
+                visibility 0s;
+  }
+}

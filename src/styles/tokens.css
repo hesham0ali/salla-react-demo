@@ -36,6 +36,7 @@
 
   --rgb-ink: 20 22 26;         /* raw channels of --clr-ink-900 */
   --rgb-on-dark: 255 255 255;  /* raw channels of --clr-white */
+  --rgb-clay: 179 82 40;       /* raw channels of --clr-clay-600 */
 
   /* ---------- 2. COLOR — Semantic (دي اللي بتستخدمها) ---------- */
   --color-bg: var(--clr-white);
@@ -159,7 +160,7 @@
   --shadow-sm: 0 2px 8px rgb(var(--rgb-ink) / 0.06);
   --shadow-md: 0 8px 24px rgb(var(--rgb-ink) / 0.08);
   --shadow-lg: 0 18px 48px rgb(var(--rgb-ink) / 0.12);
-  --shadow-focus: 0 0 0 3px rgba(179, 82, 40, 0.28);
+  --shadow-focus: 0 0 0 3px rgb(var(--rgb-clay) / 0.28);
 
   /* ---------- 9. MOTION ---------- */
   --duration-instant: 100ms;
@@ -204,8 +205,11 @@
 }
 
 /* ---------- Breakpoints (مرجع — CSS vars لا تعمل داخل media queries) ----------
-   sm: 480px | md: 768px | lg: 1024px | xl: 1280px | 2xl: 1536px
-   المشروع mobile-first: الأساس موبايل، والـ media queries بـ min-width.
+   sm: 480px | md: 768px | — : 640px | — : 900px | lg: 1024px | xl: 1280px | 2xl: 1536px
+   640px مستخدم في أقسام المنتجات والتوضيحية والتصنيفات (mobile-landscape).
+   900px مستخدم في الهيدر والتبويب والـ Faq والشهادات.
+   560px مستخدم في Footer فقط.
+   الأقسام تستخدم max-width (desktop-first) وليس min-width.
 ------------------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {

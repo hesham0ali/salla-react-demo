@@ -1,0 +1,121 @@
+.tl__track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.tl__spine {
+  position: absolute;
+  inset-block: 8px;
+  inset-inline-start: 50%;
+  width: var(--border-width);
+  background: var(--color-border-strong);
+  transform: translateX(50%);
+}
+
+.tl__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.tl__year {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  text-align: start;
+}
+
+.tl__node {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-circle);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-bg-subtle);
+  z-index: var(--z-raised);
+}
+
+.tl__card {
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-xs);
+}
+
+.tl__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tl__body {
+  margin-block-start: var(--space-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* alternating: نقلب ترتيب العمودين */
+.tl--alternating .tl__item--flip .tl__year {
+  order: 3;
+  text-align: end;
+}
+.tl--alternating .tl__item--flip .tl__node {
+  order: 2;
+}
+.tl--alternating .tl__item--flip .tl__card {
+  order: 1;
+}
+
+/* stacked: كل حاجة على نفس الجانب */
+.tl--stacked .tl__spine {
+  inset-inline-start: 0;
+  transform: none;
+}
+.tl--stacked .tl__item {
+  grid-template-columns: auto auto 1fr;
+}
+.tl--stacked .tl__node {
+  order: 1;
+}
+.tl--stacked .tl__year {
+  order: 2;
+  font-size: var(--text-xl);
+}
+.tl--stacked .tl__card {
+  order: 3;
+}
+
+@media (max-width: 768px) {
+  .tl__spine {
+    inset-inline-start: 7px;
+    transform: none;
+  }
+  .tl__item,
+  .tl--alternating .tl__item--flip {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: var(--space-4);
+  }
+  .tl__node,
+  .tl--alternating .tl__item--flip .tl__node {
+    order: 1;
+    margin-block-start: var(--space-2);
+  }
+  .tl__year,
+  .tl--alternating .tl__item--flip .tl__year {
+    order: 2;
+    grid-column: 2;
+    font-size: var(--text-xl);
+    text-align: start;
+  }
+  .tl__card,
+  .tl--alternating .tl__item--flip .tl__card {
+    order: 3;
+    grid-column: 2;
+  }
+}

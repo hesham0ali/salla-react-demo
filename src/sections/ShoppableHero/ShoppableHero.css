@@ -66,8 +66,8 @@
 .shop__dot {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
   border-radius: var(--radius-circle);
   background: var(--color-bg);
   color: var(--color-text);

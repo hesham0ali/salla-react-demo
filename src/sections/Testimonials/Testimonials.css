@@ -1,0 +1,85 @@
+.tm__panel {
+  position: relative;
+  padding: clamp(var(--space-10), 5vw, var(--space-16));
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-muted);
+  overflow: hidden;
+}
+
+.tm__mark {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-start: clamp(var(--space-6), 4vw, var(--space-12));
+  font-size: 10rem;
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.tm__quote {
+  position: relative;
+  max-width: 56ch;
+}
+
+.tm__quote p {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+.tm__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-block-start: var(--space-6);
+}
+
+.tm__meta strong {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tm__meta span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.tm__nav {
+  display: inline-flex;
+  gap: var(--space-2);
+  margin-block-start: var(--space-8);
+}
+
+/* ---------- cards ---------- */
+.tm__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+.tm__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-8);
+  background: var(--color-bg-subtle);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+}
+
+.tm__card-quote {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+}
+
+@media (max-width: 900px) {
+  .tm__cards {
+    grid-template-columns: 1fr;
+  }
+  .tm__quote p {
+    font-size: var(--text-xl);
+  }
+}

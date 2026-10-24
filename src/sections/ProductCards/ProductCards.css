@@ -1,0 +1,120 @@
+.pc__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pc__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--pc-cols, 4), minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+.pc__rail {
+  grid-auto-columns: minmax(230px, 1fr);
+}
+
+.pc__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.pc__thumb {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  background: var(--color-bg-muted);
+}
+
+.pc__img--hover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.pc__thumb:hover .pc__img--hover {
+  opacity: 1;
+}
+
+.pc__thumb:hover .pc__img--main {
+  transform: scale(1.03);
+}
+
+.pc__flags {
+  position: absolute;
+  inset-block-start: var(--space-3);
+  inset-inline-start: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  z-index: var(--z-raised);
+}
+
+.pc__quick {
+  position: absolute;
+  inset-inline: var(--space-3);
+  inset-block-end: var(--space-3);
+  z-index: var(--z-raised);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.pc__thumb:hover .pc__quick,
+.pc__thumb:focus-within .pc__quick {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pc__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.pc__name {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-normal);
+}
+
+.pc__name a:hover {
+  color: var(--color-accent);
+}
+
+.pc__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (hover: none) {
+  .pc__quick {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pc__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .pc__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pc__rail {
+    grid-auto-columns: minmax(165px, 1fr);
+  }
+}

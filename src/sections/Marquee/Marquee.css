@@ -1,0 +1,100 @@
+.mq {
+  overflow: hidden;
+  border-block: var(--border);
+}
+
+.mq--inverse {
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border-color: transparent;
+}
+.mq--subtle {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+.mq--accent {
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  border-color: transparent;
+}
+
+.mq--sm {
+  --mq-font: var(--text-sm);
+  --mq-pad: var(--space-3);
+  --mq-img: 28px;
+}
+.mq--md {
+  --mq-font: var(--text-xl);
+  --mq-pad: var(--space-5);
+  --mq-img: 44px;
+}
+.mq--lg {
+  --mq-font: var(--text-3xl);
+  --mq-pad: var(--space-8);
+  --mq-img: 64px;
+}
+
+.mq__viewport {
+  display: flex;
+  padding-block: var(--mq-pad);
+  mask-image: linear-gradient(to left, transparent, #000 6%, #000 94%, transparent);
+}
+
+.mq__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-8);
+  padding-inline-start: var(--space-8);
+  animation: mq-scroll var(--mq-duration) linear infinite var(--mq-direction);
+  will-change: transform;
+}
+
+.mq:hover .mq__track {
+  animation-play-state: paused;
+}
+
+.mq__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.mq__text {
+  font-size: var(--mq-font);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+}
+
+.mq__img {
+  width: var(--mq-img);
+  height: var(--mq-img);
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.mq__sep {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background: currentColor;
+  opacity: 0.45;
+}
+
+/* المسار مكرّر مرتين → نحرّك 50% فقط للحصول على لوب متواصل */
+@keyframes mq-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mq__track {
+    animation: none;
+  }
+}
