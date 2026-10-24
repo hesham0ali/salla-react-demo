@@ -22,7 +22,7 @@ export default function ProductCards({ id, settings, data }) {
   const isRail = settings.layout === 'rail';
 
   return (
-    <section id={id} className="section pc">
+    <section id={id} className="section section--subtle pc">
       <div className="container">
         <Reveal>
           <SectionHead
@@ -74,7 +74,7 @@ function ProductCard({ product, settings }) {
   return (
     <article className="pc__card">
       <a className="pc__thumb" href={product.href ?? '#'}>
-        <Media src={product.image} alt={product.name} ratio="125%" imgClassName="pc__img pc__img--main" />
+        <Media src={product.image} alt={product.name} ratio="100%" imgClassName="pc__img pc__img--main" />
         {settings.showHoverImage && product.hoverImage && (
           <img className="pc__img pc__img--hover" src={product.hoverImage} alt="" loading="lazy" />
         )}

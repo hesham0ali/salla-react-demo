@@ -21,7 +21,7 @@ export default function Testimonials({ id, settings, data }) {
 
   if (settings.style === 'cards') {
     return (
-      <section id={id} className="section tm">
+      <section id={id} className="section section--subtle tm">
         <div className="container">
           <div className="tm__cards">
             {items.map((t, i) => (
@@ -42,7 +42,7 @@ export default function Testimonials({ id, settings, data }) {
   const item = items[active];
 
   return (
-    <section id={id} className="section tm">
+    <section id={id} className="section section--subtle tm">
       <div className="container">
         <Reveal className="tm__panel">
           <span className="tm__mark" aria-hidden="true">
