@@ -55,18 +55,30 @@ export default function Categories({ id, settings, data }) {
 }
 
 function CategoryItem({ cat, settings }) {
+  const isTile = settings.layout === 'tiles';
   return (
     <a className="cats__item" href={cat.href ?? '#'}>
       <Media
         src={cat.image}
         alt={cat.name}
-        ratio={settings.layout === 'tiles' ? '125%' : '100%'}
+        ratio={isTile ? '130%' : '100%'}
         className="cats__media"
         imgClassName="cats__img"
       />
-      <span className="cats__label">{cat.name}</span>
-      {settings.showCount && cat.count != null && (
-        <span className="cats__count">{cat.count} منتج</span>
+      {isTile ? (
+        <div className="cats__info">
+          <span className="cats__label">{cat.name}</span>
+          {settings.showCount && cat.count != null && (
+            <span className="cats__count">{cat.count} منتج</span>
+          )}
+        </div>
+      ) : (
+        <>
+          <span className="cats__label">{cat.name}</span>
+          {settings.showCount && cat.count != null && (
+            <span className="cats__count">{cat.count} منتج</span>
+          )}
+        </>
       )}
     </a>
   );

@@ -15,7 +15,7 @@ export default function StoreStats({ id, settings, data }) {
   const stats = data.stats ?? [];
 
   return (
-    <section id={id} className="section stats">
+    <section id={id} className="section section--subtle stats">
       <div className="container">
         <Reveal>
           <SectionHead title={data.title} align="center" />

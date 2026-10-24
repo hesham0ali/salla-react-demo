@@ -17,7 +17,7 @@
 .pc__card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .pc__thumb {
@@ -57,13 +57,43 @@
   z-index: var(--z-raised);
 }
 
+.pc__wishlist {
+  position: absolute;
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-3);
+  z-index: var(--z-raised);
+  display: grid;
+  place-items: center;
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+  border-radius: var(--radius-circle);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: scale(0.82);
+  transition: opacity var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-standard);
+}
+
+.pc__card:hover .pc__wishlist,
+.pc__thumb:focus-within .pc__wishlist {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pc__wishlist:hover {
+  color: var(--color-accent);
+}
+
 .pc__quick {
   position: absolute;
   inset-inline: var(--space-3);
   inset-block-end: var(--space-3);
   z-index: var(--z-raised);
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(10px);
   transition: opacity var(--duration-base) var(--ease-standard),
     transform var(--duration-base) var(--ease-out);
 }
@@ -83,8 +113,9 @@
 
 .pc__name {
   font-size: var(--text-base);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-snug);
 }
 
 .pc__name a:hover {

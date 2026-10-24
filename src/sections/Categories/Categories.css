@@ -9,9 +9,10 @@
 }
 
 .cats__rail {
-  grid-auto-columns: minmax(140px, 1fr);
+  grid-auto-columns: minmax(160px, 1fr);
 }
 
+/* ---------- Base item ---------- */
 .cats__item {
   display: flex;
   flex-direction: column;
@@ -20,42 +21,139 @@
   text-align: center;
 }
 
-.cats__media {
-  width: 100%;
-  overflow: hidden;
+/* ---------- Circles ---------- */
+.cats--circles .cats__media {
+  border-radius: var(--radius-circle);
   transition: transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-standard);
 }
 
-.cats--circles .cats__media {
-  border-radius: var(--radius-circle);
-}
-.cats--tiles .cats__media,
-.cats--rail .cats__media {
-  border-radius: var(--card-radius);
-}
-
-.cats__item:hover .cats__media {
+.cats--circles .cats__item:hover .cats__media {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
-.cats__item:hover .cats__img {
+.cats--circles .cats__item:hover .cats__img {
   transform: scale(1.06);
 }
 
-.cats__label {
+.cats--circles .cats__label {
   font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
 }
 
-.cats__count {
+.cats--circles .cats__count {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   margin-block-start: calc(var(--space-2) * -1);
 }
 
+/* ---------- Tiles (premium overlay layout) ---------- */
+.cats--tiles .cats__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  isolation: isolate;
+  gap: 0;
+  text-align: start;
+  align-items: normal;
+}
+
+.cats--tiles .cats__media {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-none);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.cats--tiles .cats__item:hover .cats__media {
+  transform: none;
+  box-shadow: none;
+}
+
+.cats--tiles .cats__item:hover .cats__img {
+  transform: scale(1.07);
+}
+
+/* Gradient scrim */
+.cats--tiles .cats__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(var(--rgb-ink) / 0.82) 0%,
+    rgb(var(--rgb-ink) / 0.22) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.cats--tiles .cats__item:hover::after {
+  opacity: 0.85;
+}
+
+/* Text overlay */
+.cats--tiles .cats__info {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 2;
+  padding: var(--space-5) var(--space-5) var(--space-5);
+}
+
+.cats--tiles .cats__label {
+  display: block;
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  letter-spacing: var(--tracking-normal);
+}
+
+.cats--tiles .cats__count {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-inverse);
+  opacity: 0.7;
+  margin-block-start: var(--space-1);
+  margin-block-start: 0;
+  margin-top: var(--space-1);
+  font-weight: var(--font-weight-regular);
+}
+
+/* ---------- Rail (same as tiles) ---------- */
+.cats--rail .cats__media {
+  border-radius: var(--card-radius);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.cats--rail .cats__item:hover .cats__media {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.cats--rail .cats__item:hover .cats__img {
+  transform: scale(1.06);
+}
+
+.cats--rail .cats__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.cats--rail .cats__count {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-block-start: calc(var(--space-2) * -1);
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .cats__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -66,7 +164,8 @@
   .cats__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .cats__label {
+  .cats--circles .cats__label,
+  .cats--rail .cats__label {
     font-size: var(--text-sm);
   }
 }

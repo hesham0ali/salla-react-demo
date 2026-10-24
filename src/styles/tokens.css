@@ -191,7 +191,7 @@
   --control-height-md: 44px;
   --control-height-lg: 54px;
   --control-padding-x: var(--space-6);
-  --control-radius: var(--radius-pill);
+  --control-radius: var(--radius-xs);
 
   --card-radius: var(--radius-md);
   --card-bg: var(--color-bg);

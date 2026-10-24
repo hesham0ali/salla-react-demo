@@ -44,7 +44,7 @@ export const homepageSections = [
   {
     id: 'sec-categories',
     type: 'categories',
-    settings: { layout: 'circles', columns: 6, showCount: true },
+    settings: { layout: 'tiles', columns: 6, showCount: true },
     data: { title: 'تسوّق حسب التصنيف', subtitle: 'ابدأ من القسم اللي يهمك.', categories },
   },
   {
